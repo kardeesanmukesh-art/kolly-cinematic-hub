@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GenresRouteImport } from './routes/genres'
+import { Route as MoviesRouteImport } from './routes/movies'
+import { Route as TopRatedRouteImport } from './routes/top-rated'
+import { Route as WatchlistRouteImport } from './routes/watchlist'
+import { Route as MovieMovieIdRouteImport } from './routes/movie.$movieId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GenresRoute = GenresRouteImport.update({
+  id: '/genres',
+  path: '/genres',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoviesRoute = MoviesRouteImport.update({
+  id: '/movies',
+  path: '/movies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TopRatedRoute = TopRatedRouteImport.update({
+  id: '/top-rated',
+  path: '/top-rated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WatchlistRoute = WatchlistRouteImport.update({
+  id: '/watchlist',
+  path: '/watchlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MovieMovieIdRoute = MovieMovieIdRouteImport.update({
+  id: '/movie/$movieId',
+  path: '/movie/$movieId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/genres': typeof GenresRoute
+  '/movies': typeof MoviesRoute
+  '/top-rated': typeof TopRatedRoute
+  '/watchlist': typeof WatchlistRoute
+  '/movie/$movieId': typeof MovieMovieIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/genres': typeof GenresRoute
+  '/movies': typeof MoviesRoute
+  '/top-rated': typeof TopRatedRoute
+  '/watchlist': typeof WatchlistRoute
+  '/movie/$movieId': typeof MovieMovieIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/genres': typeof GenresRoute
+  '/movies': typeof MoviesRoute
+  '/top-rated': typeof TopRatedRoute
+  '/watchlist': typeof WatchlistRoute
+  '/movie/$movieId': typeof MovieMovieIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/genres'
+    | '/movies'
+    | '/top-rated'
+    | '/watchlist'
+    | '/movie/$movieId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/genres'
+    | '/movies'
+    | '/top-rated'
+    | '/watchlist'
+    | '/movie/$movieId'
+  id:
+    | '__root__'
+    | '/'
+    | '/genres'
+    | '/movies'
+    | '/top-rated'
+    | '/watchlist'
+    | '/movie/$movieId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GenresRoute: typeof GenresRoute
+  MoviesRoute: typeof MoviesRoute
+  TopRatedRoute: typeof TopRatedRoute
+  WatchlistRoute: typeof WatchlistRoute
+  MovieMovieIdRoute: typeof MovieMovieIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/genres': {
+      id: '/genres'
+      path: '/genres'
+      fullPath: '/genres'
+      preLoaderRoute: typeof GenresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/movies': {
+      id: '/movies'
+      path: '/movies'
+      fullPath: '/movies'
+      preLoaderRoute: typeof MoviesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/top-rated': {
+      id: '/top-rated'
+      path: '/top-rated'
+      fullPath: '/top-rated'
+      preLoaderRoute: typeof TopRatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/watchlist': {
+      id: '/watchlist'
+      path: '/watchlist'
+      fullPath: '/watchlist'
+      preLoaderRoute: typeof WatchlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/movie/$movieId': {
+      id: '/movie/$movieId'
+      path: '/movie/$movieId'
+      fullPath: '/movie/$movieId'
+      preLoaderRoute: typeof MovieMovieIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GenresRoute: GenresRoute,
+  MoviesRoute: MoviesRoute,
+  TopRatedRoute: TopRatedRoute,
+  WatchlistRoute: WatchlistRoute,
+  MovieMovieIdRoute: MovieMovieIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
