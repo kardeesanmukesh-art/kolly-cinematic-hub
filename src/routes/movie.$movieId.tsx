@@ -37,7 +37,7 @@ function MovieDetails() {
 
   return (
     <article>
-      <div className="film-grain relative min-h-[70vh] overflow-hidden">
+      <div className="film-grain relative overflow-hidden">
         <img src={movie.poster} alt="" className="absolute inset-0 size-full scale-110 object-cover blur-xl" />
         <div className="absolute inset-0 bg-linear-to-t from-background via-background/85 to-background/50" />
         <div className="absolute inset-0 bg-linear-to-r from-background/95 to-transparent" />

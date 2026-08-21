@@ -9,7 +9,7 @@ export function HeroBanner({ movie }: { movie: Movie }) {
   const saved = inWatchlist(movie.id);
 
   return (
-    <section className="film-grain relative min-h-[88vh] w-full overflow-hidden">
+    <section className="film-grain relative h-[88vh] min-h-[660px] w-full overflow-hidden lg:max-h-[920px]">
       <img
         src={backdrop}
         alt=""
@@ -20,7 +20,7 @@ export function HeroBanner({ movie }: { movie: Movie }) {
       <div className="absolute inset-0 bg-linear-to-t from-background via-background/75 to-background/40" />
       <div className="absolute inset-0 bg-linear-to-r from-background via-background/60 to-transparent" />
 
-      <div className="relative mx-auto flex min-h-[88vh] max-w-[1600px] items-end px-4 pt-28 pb-16 sm:px-6 lg:px-10">
+      <div className="relative mx-auto flex h-full max-w-[1600px] items-end px-4 pt-28 pb-16 sm:px-6 lg:px-10">
         <div className="grid w-full gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
           <div className="min-w-0 max-w-2xl animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full glass px-3.5 py-1.5 text-xs font-bold tracking-[0.22em] text-primary uppercase">
